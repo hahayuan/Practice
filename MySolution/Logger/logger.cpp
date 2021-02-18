@@ -131,12 +131,12 @@ bool Logger::startLogThread()
 	return false;
 }
 
-unsigned _stdcall Logger::startLogger(void* args)
+unsigned Logger::startLogger(void* args)
 {
 	for (;;)
 	{
-			string msg = Logger::getInstance()->_blockQueue->take();
-			Logger::getInstance()->outPutLog(msg.c_str());
+		string msg = Logger::getInstance()->_blockQueue->take();
+		Logger::getInstance()->outPutLog(msg.c_str());
 	}
 	return 0;
 }

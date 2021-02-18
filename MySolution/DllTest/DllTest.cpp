@@ -27,4 +27,5 @@ int main()
 
 	plog(LOG_DEBUG, "test");
 	FreeLibrary(hModule);
+	return 0;
 }

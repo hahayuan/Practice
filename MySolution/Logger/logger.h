@@ -27,7 +27,7 @@ private:
 	Logger& operator = (const Logger& a);
 	~Logger();
 	bool startLogThread();
-	static unsigned __stdcall startLogger(void* args);
+	static unsigned startLogger(void* args);
 	void outPutLog(const char* msg);
 	static Logger* _instance;
 	BlockQueue* _blockQueue;
