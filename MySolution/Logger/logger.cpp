@@ -66,10 +66,7 @@ Logger::Logger()
 	time(&t);
 	struct  tm* localTime;
 	localTime = localtime(&t);
-	int retMkdir = _mkdir("log");
-	if (retMkdir != 0) {
-		(NULL, "创建目录失败", NULL, MB_OK);
-	}
+	_mkdir("./log");
 	sprintf(fileName, "./log/Dll_Log_%04d%02d%02d.log",
 		1900 + localTime->tm_year,
 		localTime->tm_mon + 1,
@@ -134,7 +131,7 @@ bool Logger::startLogThread()
 	return false;
 }
 
-unsigned __stdcall Logger::startLogger(void* args)
+unsigned _stdcall Logger::startLogger(void* args)
 {
 	for (;;)
 	{
@@ -164,12 +161,12 @@ void Logger::outPutLog(const char* msg)
 Logger* Logger::_instance = NULL;
 
 //设置日志级别
-void setLogLevel(int level)
+void __stdcall setLogLevel(int level)
 {
 	LogLevel = level;
 }
 
-string getLogLevel(int level)
+string __stdcall getLogLevel(int level)
 {
 	if (level == LOG_DEBUG)
 	{
@@ -190,7 +187,7 @@ int BUFFER_SIZE = 2048;
 //缓存，用于缓存日志内容
 char* buffer = NULL;
 
-void __stdcall log(int level, const char* fmt, ...)
+void __stdcall dslog(int level, const char* fmt, ...)
 {
 	if (level <= LogLevel)
 	{

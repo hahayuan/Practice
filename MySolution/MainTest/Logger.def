@@ -1,6 +1,0 @@
-LIBRARY Logger
-
-EXPORTS
-	log
-	setLogLevel
-	getLogLevel

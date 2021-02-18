@@ -1,6 +1,6 @@
 LIBRARY Logger
 
 EXPORTS
-	log
+	dslog
 	setLogLevel
 	getLogLevel

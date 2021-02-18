@@ -11,9 +11,9 @@ using namespace std;
 
 #pragma warning(disable:4996)
 
-void setLogLevel(int level);
-std::string getLogLevel(int level);
-void __stdcall log(int level, const char* fmt, ...);
+void __stdcall setLogLevel(int level);
+std::string __stdcall getLogLevel(int level);
+void __stdcall dslog(int level, const char* fmt, ...);
 
 class Logger
 {

@@ -11,14 +11,14 @@ typedef void (*Plog)(int, const char*, ...);
 
 int main()
 {
-	HMODULE hModule = LoadLibrary("./dll/Logger.dll");
+	HMODULE hModule = LoadLibrary(".\\dll\\Logger.dll");
 	if (hModule == NULL)
 	{
 		MessageBox(NULL, "加载日志功能动态库失败", NULL, MB_OK);
 		return -1;
 	}
 	//写日志函数
-	Plog plog = (Plog)GetProcAddress(hModule, "log");
+	Plog plog = (Plog)GetProcAddress(hModule, "dslog");
 	if (plog == NULL)
 	{
 		MessageBox(NULL, "加载日志记录函数失败", NULL, MB_OK);
@@ -26,6 +26,5 @@ int main()
 	}
 
 	plog(LOG_DEBUG, "test");
-	std::cout << "Hello World!\n";
-
+	FreeLibrary(hModule);
 }
